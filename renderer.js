@@ -50,25 +50,26 @@
 	getFile('http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/config/catalog.json', function(content) {
 		var data = JSON.parse(content);
 
-		// renderComponent(data.dynamic);
-
-		for (var component of data.components) {
-			renderComponent(component.layout);
-		}
-	});
-
-	getFile('http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/config/catalog/penstyle.json', function(content) {
-		var data = JSON.parse(content);
-
 		container.style.width = data.sourceWidth + 'px';
 		container.style.height = data.sourceHeight + 'px';
 		container.style.position = 'relative';
 		container.style.backgroundColor = 'red';
 
-		renderComponent(data.dynamic);
-
 		for (var component of data.components) {
+			if (component.name === 'purchase_dialog') {
+				continue;
+			}
 			renderComponent(component.layout);
 		}
+
+		getFile('http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/config/catalog/penstyle.json', function(content) {
+			var data = JSON.parse(content);
+
+			renderComponent(data.dynamic);
+
+			for (var component of data.components) {
+				renderComponent(component.layout);
+			}
+		});
 	});
 })();
