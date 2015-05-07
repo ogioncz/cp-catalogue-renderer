@@ -2,10 +2,12 @@ import {Utils} from './Utils';
 
 export class Renderer {
 	private container;
+	private root;
+	private catalogue;
 
 	private renderImage(image) {
 		var img = document.createElement('img');
-		img.src = 'http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/assets/' + image.image;
+		img.src = this.root + '/deploy/metaplace/devicepng/assets/' + image.image;
 		img.style.position = 'absolute';
 		img.style.left = image.originX + 'px';
 		img.style.top = image.originY + 'px';
@@ -14,7 +16,7 @@ export class Renderer {
 
 	private renderButton(button) {
 		var img = document.createElement('img');
-		img.src = 'http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/assets/' + button.imageUp;
+		img.src = this.root + '/deploy/metaplace/devicepng/assets/' + button.imageUp;
 		img.style.position = 'absolute';
 		img.style.left = button.originX + 'px';
 		img.style.top = button.originY + 'px';
@@ -34,10 +36,12 @@ export class Renderer {
 		}
 	}
 
-	public constructor(container) {
+	public constructor(container, root, catalogue) {
 		this.container = container;
+		this.root = root;
+		this.catalogue = catalogue;
 
-		Utils.getFile('http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/config/catalog.json', function(content) {
+		Utils.getFile(this.root + '/deploy/metaplace/devicepng/config/catalog.json', function(content) {
 			let data = JSON.parse(content);
 
 			container.style.width = data.sourceWidth + 'px';
@@ -52,7 +56,7 @@ export class Renderer {
 				this.renderComponent(component.layout);
 			}
 
-			Utils.getFile('http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/en_US/deploy/metaplace/devicepng/config/catalog/penstyle.json', function(content) {
+			Utils.getFile(this.root + '/deploy/metaplace/devicepng/config/catalog/' + this.catalogue + '.json', function(content) {
 				let data = JSON.parse(content);
 
 				this.renderComponent(data.dynamic);
