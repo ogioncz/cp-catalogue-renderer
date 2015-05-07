@@ -5,7 +5,18 @@
 	<title>Catalogue</title>
 </head>
 <body>
-<div id="main"></div>
+<select id="lang">
+	<option value="en" selected>English</option>
+	<option value="pt">Portuguese</option>
+</select>
+<fieldset>
+	<legend>Catalogues</legend>
+	<select id="catalogue">
+		<option value="penstyle" selected>Penguin Style</option>
+		<option value="igloo">Igloo</option>
+	</select>
+	<button type="button" id="render">Render</button>
+</fieldset>
 <script data-main="Main" src="vendor/require.js"></script>
 </body>
 </html>
