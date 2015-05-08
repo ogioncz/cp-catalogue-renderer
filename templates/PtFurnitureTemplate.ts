@@ -28,7 +28,7 @@ export class PtFurnitureTemplate implements WikitextTemplate {
 
 		let image = 'File:' + Utils.stripDiacritics(item.label_pt) + '.png'
 
-		return `<label><input type="radio" name="gender" value="masculinum" checked="checked">Masculinum</label> <label><input type="radio" name="gender" value="femininum">Femininum</label>
+		return `<form><label><input type="radio" name="gender" value="masculinum" checked="checked">Masculinum</label> <label><input type="radio" name="gender" value="femininum">Femininum</label>
 <label><input type="radio" name="number" value="singular" checked="checked">Singular</label> <label><input type="radio" name="number" value="plural">Plural</label>
 
 {{InfoboxMoveis
@@ -70,6 +70,6 @@ ${f('A', 'O')}${pl('s', '')} ${item.label_pt} ${pl('foram', 'foi')} ${f('lançad
 [[Categoria:Móveis lançados em ${release_year}]]
 
 [[en:${item.label_en}]]
-`;
+</form>`;
 	}
 }
