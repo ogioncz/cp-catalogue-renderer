@@ -11,8 +11,9 @@ export class PtFurnitureTemplate implements WikitextTemplate {
 		item.sort = parseInt(item.sort);
 
 		let available = true ? 'Sim' : 'Não';
-		let femininum = true;
-		let plural = true;
+
+		let pl = (a, b) => '<span data-type="radio" data-name="number" data-value="plural">' + a + '</span>' + '<span data-type="radio" data-name="number" data-value="singular">' + b + '</span>';
+		let f = (a, b) => '<span data-type="radio" data-name="gender" data-value="femininum">' + a + '</span>' + '<span data-type="radio" data-name="gender" data-value="masculinum">' + b + '</span>';
 
 		let cost = item.cost ? item.cost + ' cada' : 'Grátis';
 		let price_sentence =  item.cost ? ('por ' + item.cost + ' cada') : 'gratuitamente';
@@ -27,7 +28,10 @@ export class PtFurnitureTemplate implements WikitextTemplate {
 
 		let image = 'File:' + Utils.stripDiacritics(item.label_pt) + '.png'
 
-		return `{{InfoboxMoveis
+		return `<label><input type="radio" name="gender" value="masculinum" checked="checked">Masculinum</label> <label><input type="radio" name="gender" value="femininum">Femininum</label>
+<label><input type="radio" name="number" value="singular" checked="checked">Singular</label> <label><input type="radio" name="number" value="plural">Plural</label>
+
+{{InfoboxMoveis
 |nome = ${item.label_pt}
 |imagem = ${image}
 |disponivel = ${available}
@@ -38,10 +42,10 @@ export class PtFurnitureTemplate implements WikitextTemplate {
 |id = ${cost}
 }}
 
-${femininum ? 'A' : 'O'}${plural ? 's' : ''} '''${item.label_pt}''' ${plural ? 'são' : 'é'} um móvel de ${this.types[item.type]} do [[Club Penguin]]. ${femininum ? 'Ela' : 'Ele'}${plural ? 's' : ''} ${plural ? 'estão disponíveis' : 'está disponível'} no catálogo [[Iglu & Cia]], onde [[assinante]]s podem ${femininum ? 'adquiri-la' : 'adquiri-lo'}${plural ? 's' : ''} ${price_sentence}.
+${f('A', 'O')}${pl('s', '')} '''${item.label_pt}''' ${pl('são', 'é')} um móvel de ${this.types[item.type]} do [[Club Penguin]]. ${f('Ela', 'Ele')}${pl('s', '')} ${pl('estão disponíveis', 'está disponível')} no catálogo [[Iglu & Cia]], onde [[assinante]]s podem ${f('adquiri-la', 'adquiri-lo')}${pl('s', '')} ${price_sentence}.
 
 == História ==
-${femininum ? 'A' : 'O'}${plural ? 's' : ''} ${item.label_pt} ${plural ? 'foram' : 'foi'} ${femininum ? 'lançada' : 'lançado'}${plural ? 's' : ''} na edição de [[Iglu & Cia ${catalogue_issue}|${release_month} de ${release_year}]] do catálogo Iglu & Cia. Atualmente ${plural ? 'são' : 'é'} ${femininum ? 'considerada' : 'considerado'}${plural ? 's' : ''} um móvel comum.
+${f('A', 'O')}${pl('s', '')} ${item.label_pt} ${pl('foram', 'foi')} ${f('lançada', 'lançado')}${pl('s', '')} na edição de [[Iglu & Cia ${catalogue_issue}|${release_month} de ${release_year}]] do catálogo Iglu & Cia. Atualmente ${pl('são', 'é')} ${f('considerada', 'considerado')}${pl('s', '')} um móvel comum.
 
 === Histórico ===
 {|class="wikitable table-release-history" 

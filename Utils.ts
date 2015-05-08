@@ -57,4 +57,8 @@ export class Utils {
 		});
 		return promise;
 	}
+
+	static eachChild(parent : Element, selector : string, cb) {
+		return Array.prototype.forEach.call(parent.querySelectorAll(selector), (child) => cb.bind(parent)(child));
+	}
 }

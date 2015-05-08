@@ -21,7 +21,7 @@ export class EnItemTemplate implements WikitextTemplate {
 		let d = new Date();
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 
-		let pin_order = item.type === 8 ? ' It was \'\'[[Club Penguin]]\'\'’s ###<sup>th</sup> [[Pin]].' : '';
+		let pin_order = item.type === 8 ? ' It was \'\'[[Club Penguin]]\'\'’s ###&lt;sup&gt;th&lt;/sup&gt; [[Pin]].' : '';
 
 		let secret_item = data.secret ? '[[Category:Secret Items]]\n' : '';
 
@@ -58,10 +58,10 @@ This item was released on ${release_date}.${pin_order}
 |}
 
 == Gallery ==
-<gallery captionalign="left">
+&lt;gallery captionalign="left"&gt;
 File:${item.label}2.png|The ${item.label} in-game.
 File:${item.label}1.png|The ${item.label} on a player card.
-</gallery>
+&lt;/gallery&gt;
 
 == Names in other languages ==
 {{OtherLanguage

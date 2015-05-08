@@ -56,7 +56,18 @@ document.getElementById('item').addEventListener('click', function renderCatalog
 
 	if (template) {
 		let generator = new generatorClass(template);
-		generator.render(itemid).then((result) => {container.textContent = result}).catch(function(msg) {
+		generator.render(itemid).then(function(result) {
+			container.innerHTML = result;
+			Utils.eachChild(container, 'input[type="radio"]', function(el) {
+				if (!el.checked) {
+					Utils.eachChild(container, '[data-name="' + el.name + '"][data-value="' + el.value + '"]', (child) => child.style.display = 'none');
+				}
+				el.addEventListener('change', function(e) {
+					Utils.eachChild(container, '[data-name="' + this.name + '"]', (child) => child.style.display = 'none');
+					Utils.eachChild(container, '[data-name="' + this.name + '"][data-value="' + this.value + '"]', (child) => child.style.display = 'inline');
+				})
+			});
+		}).catch(function(msg) {
 			container.textContent = msg;
 			alert(msg);
 		});
