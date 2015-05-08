@@ -41,7 +41,7 @@ export class Renderer {
 		this.root = root;
 		this.catalogue = catalogue;
 
-		Utils.getFile(this.root + '/deploy/metaplace/devicepng/config/catalog.json', function(content) {
+		Utils.getFile(this.root + '/deploy/metaplace/devicepng/config/catalog.json').then(function(content) {
 			let data = JSON.parse(content);
 
 			container.style.width = data.sourceWidth + 'px';
@@ -56,15 +56,15 @@ export class Renderer {
 				this.renderComponent(component.layout);
 			}
 
-			Utils.getFile(this.root + '/deploy/metaplace/devicepng/config/catalog/' + this.catalogue + '.json', function(content) {
-				let data = JSON.parse(content);
+			return Utils.getFile(this.root + '/deploy/metaplace/devicepng/config/catalog/' + this.catalogue + '.json');
+		}.bind(this)).then(function(content) {
+			let data = JSON.parse(content);
 
-				this.renderComponent(data.dynamic);
+			this.renderComponent(data.dynamic);
 
-				for (let component of data.components) {
-					this.renderComponent(component.layout);
-				}
-			}.bind(this));
-		}.bind(this));
+			for (let component of data.components) {
+				this.renderComponent(component.layout);
+			}
+		}.bind(this)).catch((msg) => alert(msg));
 	}
 }
