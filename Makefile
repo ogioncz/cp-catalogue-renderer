@@ -1,7 +1,10 @@
 all: Main.js
 
 Main.js:
-	tsc --module amd Main.ts
+	tsc --module amd --sourcemap Main.ts
+
+watch:
+	tsc --watch --module amd --sourcemap Main.ts
 
 clean:
 	rm *.js
