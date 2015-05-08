@@ -1,8 +1,11 @@
 import {Renderer} from './Renderer';
 import {Utils} from './Utils';
-import {ItemGenerator} from './generators/ItemGenerator';
 import {WikitextGenerator} from './WikitextGenerator';
+import {ItemGenerator} from './generators/ItemGenerator';
+import {FurnitureGenerator} from './generators/FurnitureGenerator';
 import {EnItemTemplate} from './templates/EnItemTemplate';
+import {EnFurnitureTemplate} from './templates/EnFurnitureTemplate';
+import {PtFurnitureTemplate} from './templates/PtFurnitureTemplate';
 
 document.getElementById('render').addEventListener('click', function renderCatalogue(e) {
 	let container = document.createElement('div');
@@ -34,6 +37,13 @@ document.getElementById('item').addEventListener('click', function renderCatalog
 		generatorClass = ItemGenerator;
 		if (lang === 'en') {
 			template = new EnItemTemplate();
+		}
+	} else if (itemtype === 'furniture') {
+		generatorClass = FurnitureGenerator;
+		if (lang === 'en') {
+			template = new EnFurnitureTemplate();
+		} else if (lang === 'pt') {
+			template = new PtFurnitureTemplate();
 		}
 	}
 
