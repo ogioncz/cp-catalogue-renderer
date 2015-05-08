@@ -21,6 +21,11 @@ document.getElementById('render').addEventListener('click', function renderCatal
 });
 
 document.getElementById('item').addEventListener('click', function renderCatalogue(e) {
+	if (!document.getElementById('itemid').checkValidity()) {
+		alert('Please enter a valid ID.');
+		return;
+	}
+
 	let container = document.createElement('pre');
 	document.body.appendChild(container);
 
