@@ -24,6 +24,8 @@ document.getElementById('item').addEventListener('click', function renderCatalog
 	let container = document.createElement('pre');
 	document.body.appendChild(container);
 
+	container.innerHTML = '<div class="loading"></div>Loading…';
+
 	let lang = document.getElementById('lang');
 	lang = lang.options[lang.selectedIndex].value;
 
@@ -49,7 +51,10 @@ document.getElementById('item').addEventListener('click', function renderCatalog
 
 	if (template) {
 		let generator = new generatorClass(template);
-		generator.render(itemid).then((result) => {container.textContent = result}).catch((msg) => alert(msg));
+		generator.render(itemid).then((result) => {container.textContent = result}).catch(function(msg) {
+			container.textContent = msg;
+			alert(msg);
+		});
 	} else {
 		alert('Requested language/type combination isn’t yet supported.');
 	}
