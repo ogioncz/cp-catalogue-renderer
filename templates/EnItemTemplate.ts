@@ -12,13 +12,27 @@ export class EnItemTemplate implements WikitextTemplate {
 		let cost = item.cost ? item.cost + ' [[coin]]s' : 'Free';
 		let cost_sentence = item.cost ? 'for ' + item.cost + ' [[coin]]s' : 'for free';
 
-		let type_info = this.types[item.type];
-		let type_sentence = 'a ' + this.types[item.type];
-		let is_member = item.is_member ? 'yes' : 'no';
-		let who_can_buy = item.is_member ? 'All players' : 'Members';
+		let file_name = Utils.capitalise(item.label).replace(/ /g, '');
+
+		let type_info = Utils.capitalise(this.types[item.type]) + ' Item';
+		let type_sentence = 'a ' + this.types[item.type] + (item.type === 8 ? '' : ' item');
+		let is_member = item.is_member ? 'Yes' : 'No';
+		let who_can_buy = !item.is_member ? 'All players' : 'Members';
+
+		let where = '?';
 		let where_to_get = ' from ########';
+		let history_catalogue = '';
 
 		let d = new Date();
+		d.setDate(6);
+
+		let penguin_style = true
+		if (penguin_style) {
+			where = '[[Penguin Style]]';
+			where_to_get = ' from the [[Penguin Style]]';
+			history_catalogue = ' in [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Penguin Style]]';
+		}
+
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 
 		let pin_order = item.type === 8 ? ' It was \'\'[[Club Penguin]]\'\'’s ###&lt;sup&gt;th&lt;/sup&gt; [[Pin]].' : '';
@@ -32,15 +46,19 @@ export class EnItemTemplate implements WikitextTemplate {
 			itemswf_args = '|sprites=0|paper=0|photos=1';
 		}
 
+		let categories = [
+			''
+		];
+
 		let template = `{{ItemInfobox
 |name = ${item.label}
-|image = File:${item.label}.png
+|image = File:${file_name}.png
 |available = Yes
 |type = ${type_info}
 |member = ${is_member}
 |party = None
 |cost = ${cost}
-|found = ?
+|found = ${where}
 |id = ${item.id}
 |unlock = No
 }}
@@ -48,7 +66,7 @@ export class EnItemTemplate implements WikitextTemplate {
 The '''${item.label}''' is ${type_sentence} in ''[[Club Penguin]]''. ${who_can_buy} are able to get ${item.label} ${cost_sentence}${where_to_get}.
 
 == History ==
-This item was released on ${release_date}.${pin_order}
+This item was released on ${release_date}${history_catalogue}.${pin_order}
 
 === Release History ===
 {|class="wikitable"
@@ -59,8 +77,8 @@ This item was released on ${release_date}.${pin_order}
 
 == Gallery ==
 &lt;gallery captionalign="left"&gt;
-File:${item.label}2.png|The ${item.label} in-game.
-File:${item.label}1.png|The ${item.label} on a player card.
+File:${file_name}2.png|The ${item.label} in-game.
+File:${file_name}1.png|The ${item.label} on a player card.
 &lt;/gallery&gt;
 
 == Names in other languages ==
@@ -77,7 +95,7 @@ File:${item.label}1.png|The ${item.label} on a player card.
 [[Category:Clothing]]
 [[Category:${this.type_categories[item.type]}]]
 [[Category:Clothes released in ${d.getFullYear()}]]${secret_item}
-
+${categories.join('\n')}
 [[pt:${item.label_pt}]]
 `;
 
