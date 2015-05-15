@@ -44,18 +44,26 @@ export class Utils {
 		return promise;
 	}
 
-	static getJson(url) {
+	static getCachedFile(url) {
 		var promise = new Promise(function(resolve, reject) {
-			Utils.getFile(url).then(function(content) {
-				try {
-					let ret = JSON.parse(content)
-					resolve(ret);
-				} catch (ex) {
-					reject(ex);
-				}
-			}).catch((msg) => reject(msg));
+			if (localStorage['game_configs:' + url]) {
+				resolve(localStorage['game_configs:' + url]);
+			} else {
+				Utils.getFile(url).then(function(content) {
+					try {
+						localStorage['game_configs:' + url] = content;
+						resolve(content);
+					} catch (ex) {
+						reject(ex);
+					}
+				}).catch((msg) => reject(msg));
+			}
 		});
 		return promise;
+	}
+
+	static getJson(url) {
+		return Utils.getCachedFile(url).then(JSON.parse);
 	}
 
 	static eachChild(parent : Element, selector : string, cb) {
