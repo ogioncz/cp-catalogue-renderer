@@ -78,3 +78,7 @@ document.getElementById('item').addEventListener('click', function renderCatalog
 		alert('Requested language/type combination isn’t yet supported.');
 	}
 });
+
+document.getElementById('cache').addEventListener('click', function clearCache(e) {
+	localStorage.clear();
+});
