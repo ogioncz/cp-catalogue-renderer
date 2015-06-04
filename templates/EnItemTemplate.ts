@@ -14,8 +14,8 @@ export class EnItemTemplate implements WikitextTemplate {
 
 		let file_name = Utils.capitalise(item.label).replace(/ /g, '');
 
-		let type_info = Utils.capitalise(this.types[item.type]) + ' Item';
-		let type_sentence = 'a ' + this.types[item.type] + (item.type === 8 ? '' : ' item');
+		let type_info = (item.type == 8 || item.type == 9) ? ('[[' + Utils.capitalise(this.types[item.type]) + ']]') : (Utils.capitalise(this.types[item.type]) + ' Item');
+		let type_sentence = 'a ' + this.types[item.type] + ((item.type == 8 || item.type == 9) ? '' : ' item');
 		let is_member = item.is_member ? 'Yes' : 'No';
 		let who_can_buy = !item.is_member ? 'All players' : 'Members';
 
@@ -24,13 +24,13 @@ export class EnItemTemplate implements WikitextTemplate {
 		let history_catalogue = '';
 
 		let d = new Date();
-		d.setDate(6);
 
 		let penguin_style = true
 		if (penguin_style) {
 			where = '[[Penguin Style]]';
 			where_to_get = ' from the [[Penguin Style]]';
 			history_catalogue = ' in [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Penguin Style]]';
+			d.setDate(Utils.getFirstDayInMonthDate(2, d));
 		}
 
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
@@ -44,6 +44,17 @@ export class EnItemTemplate implements WikitextTemplate {
 			itemswf_args = '|pin=1';
 		} else if (item.type === 9) {
 			itemswf_args = '|sprites=0|paper=0|photos=1';
+		}
+
+		let gallery = '';
+		if (item.type === 8) {
+			gallery = `File:${file_name}Location.png|The ${item.label} location`;
+		} else if (item.type === 9) {
+			gallery = `File:${file_name}Icon.png|The ${item.label} icon`;
+		} else {
+			gallery = `File:${file_name}2.png|The ${item.label} in-game
+File:${file_name}1.png|The ${item.label} on a player card
+`;
 		}
 
 		let categories = [
@@ -77,8 +88,7 @@ This item was released on ${release_date}${history_catalogue}.${pin_order}
 
 == Gallery ==
 &lt;gallery captionalign="left"&gt;
-File:${file_name}2.png|The ${item.label} in-game.
-File:${file_name}1.png|The ${item.label} on a player card.
+${gallery}
 &lt;/gallery&gt;
 
 == Names in other languages ==

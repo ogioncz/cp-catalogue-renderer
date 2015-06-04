@@ -25,6 +25,12 @@ export class Utils {
 		return word.split('').map((char) => this.cyrillic[char] || char).join('');
 	}
 
+	static getFirstDayInMonthDate(day, date) {
+		date.setDate(1);
+		var firstDay = date.getDay();
+		return (firstDay > day ? (day + 1 + 7 - firstDay) : (1 + day - firstDay));
+	}
+
 	static getFile(url) {
 		var promise = new Promise(function(resolve, reject) {
 			var request = new XMLHttpRequest();
