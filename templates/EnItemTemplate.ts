@@ -30,7 +30,7 @@ export class EnItemTemplate implements WikitextTemplate {
 			where = '[[Penguin Style]]';
 			where_to_get = ' from the [[Penguin Style]]';
 			history_catalogue = ' in [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Penguin Style]]';
-			d.setDate(Utils.getFirstDayInMonthDate(2, d));
+			d.setDate(Utils.getFirstDayInMonthDate(3, d));
 		}
 
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
@@ -61,7 +61,11 @@ File:${file_name}1.png|The ${item.label} on a player card
 			''
 		];
 
-		let template = `{{ItemInfobox
+		let can_copy = document.queryCommandSupported('copy') ? '' : ' disabled="disabled"';
+
+		let template = `<a href="http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png">inventory icon</a> · <a href="http://media8.clubpenguin.com/game/items/images/paper/image/600/${item.id}.png">player-card</a> · <button type="button" class="copy"${can_copy}>copy</button>
+
+<div class="copyable">{{ItemInfobox
 |name = ${item.label}
 |image = File:${file_name}.png
 |available = Yes
@@ -81,9 +85,9 @@ This item was released on ${release_date}${history_catalogue}.${pin_order}
 
 === Release History ===
 {|class="wikitable"
-!Available from!!Available until
+!Where!!Available from!!Available until
 |-
-|${release_date}||{{Available|Items}}
+|${where}||${release_date}||{{Available|Items}}
 |}
 
 == Gallery ==
@@ -107,7 +111,7 @@ ${gallery}
 [[Category:Clothes released in ${d.getFullYear()}]]${secret_item}
 ${categories.join('\n')}
 [[pt:${item.label_pt}]]
-`;
+</div>`;
 
 		return template;
 	}

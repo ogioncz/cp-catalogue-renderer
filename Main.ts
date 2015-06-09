@@ -127,3 +127,26 @@ document.getElementById('item').addEventListener('click', function generateItemW
 document.getElementById('cache').addEventListener('click', function clearCache(e) {
 	localStorage.clear();
 });
+
+document.addEventListener('click', function(e) {
+	let el : Element = <Element> e.target;
+	if (el.classList.contains('copy')) {
+		let copyable = el.nextElementSibling;
+
+		window.getSelection().removeAllRanges();
+		let range = document.createRange();
+		range.selectNode(copyable);
+		window.getSelection().addRange(range);
+
+		try {
+			var successful = document.execCommand('copy');
+			var msg = successful ? 'successful' : 'unsuccessful';
+			console.log('Copy email command was ' + msg);
+		} catch (err) {
+			console.log('Oops, unable to copy');
+		}
+		window.getSelection().removeAllRanges();
+
+		e.preventDefault();
+	}
+})
