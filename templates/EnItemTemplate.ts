@@ -52,8 +52,8 @@ export class EnItemTemplate implements WikitextTemplate {
 		} else if (item.type === 9) {
 			gallery = `File:${file_name}Icon.png|The ${item.label} icon`;
 		} else {
-			gallery = `File:${file_name}2.png|The ${item.label} in-game
-File:${file_name}1.png|The ${item.label} on a player card
+			gallery = `File:${file_name}1.png|The ${item.label} in-game
+File:${file_name}2.png|The ${item.label} on a player card
 `;
 		}
 
@@ -91,9 +91,8 @@ This item was released on ${release_date}${history_catalogue}.${pin_order}
 |}
 
 == Gallery ==
-&lt;gallery captionalign="left"&gt;
-${gallery}
-&lt;/gallery&gt;
+&lt;gallery&gt;
+${gallery}&lt;/gallery&gt;
 
 == Names in other languages ==
 {{OtherLanguage
