@@ -39,11 +39,12 @@ export class EnItemTemplate implements WikitextTemplate {
 
 		let secret_item = data.secret ? '[[Category:Secret Items]]\n' : '';
 
+		let itemswf_template = 'Itemswf';
 		let itemswf_args = '';
 		if (item.type === 8) {
 			itemswf_args = '|pin=1';
 		} else if (item.type === 9) {
-			itemswf_args = '|sprites=0|paper=0|photos=1';
+			itemswf_template = 'Photoswf';
 		}
 
 		let gallery = '';
@@ -103,7 +104,7 @@ ${gallery}&lt;/gallery&gt;
 |russian = ${item.label_ru}
 }}
 
-{{Itemswf|${item.id}${itemswf_args}}}
+{{${itemswf_template}|${item.id}${itemswf_args}}}
 
 [[Category:Clothing]]
 [[Category:${this.type_categories[item.type]}]]
