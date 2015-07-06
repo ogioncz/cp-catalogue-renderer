@@ -67,8 +67,15 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 	}
 });
 
+let itemidEntry : HTMLInputElement = <HTMLInputElement> document.getElementById('itemid');
+
+itemidEntry.addEventListener('keypress', (e) => {
+	if (e.key == 'Enter') {
+		document.getElementById('item').click();
+	}
+})
+
 document.getElementById('item').addEventListener('click', function generateItemWikitext(e) {
-	let itemidEntry : HTMLInputElement = <HTMLInputElement> document.getElementById('itemid');
 	if (!itemidEntry.checkValidity()) {
 		alert('Please enter a valid ID.');
 		return;
