@@ -46,7 +46,7 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 
 	if (template) {
 		let generator : WikitextGenerator = new generatorClass(template);
-		generator.render('http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/' + Utils.full_langs[lang] + '/deploy/metaplace/devicepng/config/catalog/' + catalogue + '.json').then(function(result) {
+		generator.render({catalogue: catalogue, lang: lang}).then(function(result) {
 			container.innerHTML = result;
 			Utils.eachChild(container, 'input[type="radio"]', function(el) {
 				if (!el.checked) {

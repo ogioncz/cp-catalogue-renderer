@@ -21,34 +21,35 @@ export class PtPenguinStyleTemplate implements WikitextTemplate {
 		let prev_year = d.getFullYear();
 
 
-		let items = data.configurator;
-
+		let items = data.catalogue.configurator;
+		let item_data = data.items;
+		let getLabel = (id) => (item_data.filter((item) => parseInt(item.paper_item_id) === parseInt(id))[0].label);
 		let filenamize = (label) => Utils.capitalise(label).replace(/ /g, '');
 
 
 		let colors = '';
 		for (let item of items.filter((item) => parseInt(item.type) === 1)) {
-			colors += `\nArquivo:IconeCor${filenamize(item.label)}.png|[[${item.label}]]`;
+			colors += `\nArquivo:IconeCor${filenamize(getLabel(item.id))}.png|[[${getLabel(item.id)}]]`;
 		}
 
 		let backgrounds = '';
 		for (let item of items.filter((item) => parseInt(item.type) === 9)) {
-			backgrounds += `\nArquivo:${filenamize(item.label)}Icon.png|[[${item.label}]]`;
+			backgrounds += `\nArquivo:${filenamize(getLabel(item.id))}Icon.png|[[${getLabel(item.id)}]]`;
 		}
 
 		let member_items = '';
 		for (let item of items.filter((item) => item.is_member === 'true')) {
-			member_items += `\nArquivo:${filenamize(item.label)}.png|[[${item.label}]]`;
+			member_items += `\nArquivo:${filenamize(getLabel(item.id))}.png|[[${getLabel(item.id)}]]`;
 		}
 
 		let items_for_everyone = '';
 		for (let item of items.filter((item) => item.is_member === 'false' && parseInt(item.type) !== 1 && parseInt(item.type) !== 8 && parseInt(item.type) !== 9)) {
-			items_for_everyone += `\nArquivo:${filenamize(item.label)}.png|[[${item.label}]]`;
+			items_for_everyone += `\nArquivo:${filenamize(getLabel(item.id))}.png|[[${getLabel(item.id)}]]`;
 		}
 
 		let flags = '';
 		for (let item of items.filter((item) => parseInt(item.type) === 8)) {
-			flags += `\nArquivo:Bandeira${filenamize(item.label)}.png|[[Bandeira ${item.label}|${item.label}]]`;
+			flags += `\nArquivo:Bandeira${filenamize(getLabel(item.id))}.png|[[Bandeira ${getLabel(item.id)}|${getLabel(item.id)}]]`;
 		}
 
 		return `{{Caixa de Sucessão|Estilo Pinguim ${native_months[prev_month]} ${prev_year}|Estilo Pinguim ${native_months[next_month]} ${next_year}}}
