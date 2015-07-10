@@ -4,18 +4,18 @@ import {Utils} from '../Utils';
 export class PtPenguinStyleTemplate implements WikitextTemplate {
 	render(data) {
 		let native_months = Utils.pt_months;
-		
+
 		let d = new Date();
 		let month = d.getMonth();
 		let year = d.getFullYear();
 		let short_year = year.toString().slice(2,4);
 		let first_wednesday = Utils.getFirstDayInMonthDate(3, d);
-		
+
 		d.setMonth(d.getMonth() + 1);
 		let next_month = d.getMonth();
 		let next_year = d.getFullYear();
 		let next_wednesday = Utils.getFirstDayInMonthDate(3, d);
-		
+
 		d.setMonth(d.getMonth() - 2);
 		let prev_month = d.getMonth();
 		let prev_year = d.getFullYear();
@@ -93,15 +93,6 @@ __NOTOC__
 &lt;/div&gt;
 
 &lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Faça um moletom do seu jeito'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
-&lt;gallery&gt;
-
-&lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
 &lt;center&gt;&lt;big&gt;'''ÚLTIMA CHANCE'''&lt;/big&gt;&lt;/center&gt;
 &lt;div class="mw-collapsible-content"&gt;
 &lt;gallery&gt;
@@ -117,17 +108,6 @@ __NOTOC__
 &lt;/gallery&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-== Itens secretos ==
-=== Itens para assinantes ===
-* Clique na posição 1 ou 2 do ''Leaderboard'' → [[Cachecol Axadrezado]]
-
-=== Crie o seu moletom ===
-* Clique na nadadeira direita do pinguim roxo → [[Elmo de Viking]]
-** Repita isso três vezes (assim na quarta vez você vai encontrar o Elmo de Viking Azul) → [[Elmo de Viking Azul]]
-
-=== Até ${next_wednesday} de ${native_months[next_month].toLocaleLowerCase()} ===
-* Clique no tênis da direita dos ''Tênis Quadriculados Roxos'' → [[Fantasia de Puffle Dourado]]
 
 == Arquivos arquivados ==
 * [[archives:Media:PTCataloguesClothing${Utils.en_months[month].substring(0, 3)}${year}.json|Estilo Pinguim ${native_months[month]} ${year}]]

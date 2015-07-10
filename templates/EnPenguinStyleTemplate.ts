@@ -4,18 +4,18 @@ import {Utils} from '../Utils';
 export class EnPenguinStyleTemplate implements WikitextTemplate {
 	render(data) {
 		let native_months = Utils.en_months;
-		
+
 		let d = new Date();
 		let month = d.getMonth();
 		let year = d.getFullYear();
 		let short_year = year.toString().slice(2,4);
 		let first_wednesday = Utils.getFirstDayInMonthDate(3, d);
-		
+
 		d.setMonth(d.getMonth() + 1);
 		let next_month = d.getMonth();
 		let next_year = d.getFullYear();
 		let next_wednesday = Utils.getFirstDayInMonthDate(3, d);
-		
+
 		d.setMonth(d.getMonth() - 2);
 		let prev_month = d.getMonth();
 		let prev_year = d.getFullYear();
@@ -100,43 +100,10 @@ __NOTOC__
 &lt;/div&gt;
 
 &lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''“Build your own Hoodie” items'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
-&lt;gallery&gt;
-File:Clothing4500.PNG|[[Custom Hoodie|Black Hoodie with white dots]]
-File:Clothing4582.PNG|[[Custom Hoodie|Black Hoodie with red and yellow splatter]]
-File:Clothing4583.PNG|[[Custom Hoodie|Black Hoodie with white stars]]
-File:Clothing4584.PNG|[[Custom Hoodie|Black Hoodie with white stripes]]
-File:Clothing4585.PNG|[[Custom Hoodie|Black Hoodie with Black Puffle in fire]]
-File:Clothing4495.PNG|[[Custom Hoodie|White Hoodie with black dots]]
-File:Clothing4586.PNG|[[Custom Hoodie|White Hoodie with red and yellow splatter]]
-File:Clothing4587.PNG|[[Custom Hoodie|White Hoodie with black stars]]
-File:Clothing4588.PNG|[[Custom Hoodie|White Hoodie with grey stripes]]
-File:Clothing4589.PNG|[[Custom Hoodie|White Hoodie with Black Puffle in fire]]
-File:Clothing4591.PNG|[[Custom Hoodie|Yellow Hoodie with black dots]]
-File:Clothing4590.PNG|[[Custom Hoodie|Yellow Hoodie with red and yellow splatter]]
-File:Clothing4592.PNG|[[Custom Hoodie|Yellow Hoodie with white stars]]
-File:Clothing4593.PNG|[[Custom Hoodie|Yellow Hoodie with white stripes]]
-File:Clothing4594.PNG|[[Custom Hoodie|Yellow Hoodie with Black Puffle in fire]]
-File:Clothing4595.PNG|[[Custom Hoodie|Orange Hoodie with black dots]]
-File:Clothing4596.PNG|[[Custom Hoodie|Orange Hoodie with red and yellow splatter]]
-File:Clothing4597.PNG|[[Custom Hoodie|Orange Hoodie with white stars]]
-File:Clothing4598.PNG|[[Custom Hoodie|Orange Hoodie with white stripes]]
-File:Clothing4599.PNG|[[Custom Hoodie|Orange Hoodie with Black Puffle in fire]]
-File:Clothing4600.PNG|[[Custom Hoodie|Red Hoodie with black dots]]
-File:Clothing4601.PNG|[[Custom Hoodie|Red Hoodie with red and yellow splatter]]
-File:Clothing4602.PNG|[[Custom Hoodie|Red Hoodie with white stars]]
-File:Clothing4603.PNG|[[Custom Hoodie|Red Hoodie with white stripes]]
-File:Clothing4604.PNG|[[Custom Hoodie|Red Hoodie with Black Puffle in fire]]
-&lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
 &lt;center&gt;&lt;big&gt;'''“LAST CHANCE!” items'''&lt;/big&gt;&lt;/center&gt;
 &lt;div class="mw-collapsible-content"&gt;
 &lt;gallery&gt;
-File:Hans'Boots.PNG|[[Hans' Boots]]
+
 &lt;/gallery&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -148,20 +115,6 @@ File:Hans'Boots.PNG|[[Hans' Boots]]
 &lt;/gallery&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-== Secret items ==
-{{Spoiler}}
-=== Member clothes ===
-
-=== Build your own hoodie! ===
-* Click the Purple Penguin’s flipper → [[Viking Helmet]]
-:* Repeat the steps to get the Viking Helmet 3 times (so you’ll find the Blue Viking Helmet on the fourth time) → [[Blue Viking Helmet]]
-
-=== “LAST CHANCE!” items ===
-* Click on the snow near the “L” of Leader → [[Checkered Scarf]]
-* Click on the purple penguin’s flipper → [[Lime Green Sneakers]]
-* Click on the owl of the ''Owl I Want Outfit'' → [[Hot Pink Sneakers]]
-{{Spoiler2}}
 
 == Archived files ==
 * [[archives:Media:ENCataloguesClothing${native_months[month].substr(0, 3)}${year}.json|${native_months[month]} ${year} Penguin Style]]
