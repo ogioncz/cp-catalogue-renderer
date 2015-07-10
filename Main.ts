@@ -69,7 +69,7 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 				});
 			});
 		}).catch(function(msg) {
-			container.textContent = msg;
+			container.parentNode.removeChild(container);
 			alert(msg);
 		});
 	} else {
@@ -133,7 +133,7 @@ document.getElementById('item').addEventListener('click', function generateItemW
 				});
 			});
 		}).catch(function(msg) {
-			container.textContent = msg;
+			container.parentNode.removeChild(container);
 			alert(msg);
 		});
 	} else {
