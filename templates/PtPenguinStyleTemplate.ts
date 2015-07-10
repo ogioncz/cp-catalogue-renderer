@@ -24,7 +24,7 @@ export class PtPenguinStyleTemplate implements WikitextTemplate {
 		let items = data.catalogue.configurator;
 		let item_data = data.items;
 		let getLabel = (id) => (item_data.filter((item) => parseInt(item.paper_item_id) === parseInt(id))[0].label);
-		let filenamize = (label) => Utils.capitalise(label).replace(/ /g, '');
+		let filenamize = (label) => label.replace(/ /g, '');
 
 
 		let colors = '';
