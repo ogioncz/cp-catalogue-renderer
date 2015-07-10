@@ -5,11 +5,14 @@ import {WikitextTemplate} from './WikitextTemplate';
 import {ItemGenerator} from './generators/ItemGenerator';
 import {FurnitureGenerator} from './generators/FurnitureGenerator';
 import {PenguinStyleGenerator} from './generators/PenguinStyleGenerator';
+import {FurnitureCatalogGenerator} from './generators/FurnitureCatalogGenerator';
 import {EnItemTemplate} from './templates/EnItemTemplate';
 import {EnFurnitureTemplate} from './templates/EnFurnitureTemplate';
 import {PtFurnitureTemplate} from './templates/PtFurnitureTemplate';
 import {EnPenguinStyleTemplate} from './templates/EnPenguinStyleTemplate';
 import {PtPenguinStyleTemplate} from './templates/PtPenguinStyleTemplate';
+import {PtFurnitureCatalogTemplate} from './templates/PtFurnitureCatalogTemplate';
+import {EnFurnitureCatalogTemplate} from './templates/EnFurnitureCatalogTemplate';
 
 var langSelect : HTMLSelectElement = <HTMLSelectElement> document.getElementById('lang');
 
@@ -19,7 +22,7 @@ document.getElementById('render').addEventListener('click', function renderCatal
 
 	let lang = langSelect.options[langSelect.selectedIndex].value;
 
-	let catalogueSelect : HTMLSelectElement = <HTMLSelectElement> document.getElementById('catalogue');	
+	let catalogueSelect : HTMLSelectElement = <HTMLSelectElement> document.getElementById('catalogue');
 	let catalogue = catalogueSelect.options[catalogueSelect.selectedIndex].value;
 
 	let renderer = new Renderer(container, 'http://media8.clubpenguin.com/mobile/cp-mobile-ui/clubpenguin_v1_6/' + Utils.full_langs[lang], catalogue);
@@ -31,7 +34,7 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 
 	let lang = langSelect.options[langSelect.selectedIndex].value;
 
-	let catalogueSelect : HTMLSelectElement = <HTMLSelectElement> document.getElementById('catalogue');	
+	let catalogueSelect : HTMLSelectElement = <HTMLSelectElement> document.getElementById('catalogue');
 	let catalogue = catalogueSelect.options[catalogueSelect.selectedIndex].value;
 
 	var template : WikitextTemplate, generatorClass;
@@ -41,6 +44,13 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 			template = new EnPenguinStyleTemplate();
 		} else if (lang === 'pt') {
 			template = new PtPenguinStyleTemplate();
+		}
+	} else if (catalogue === 'iglooedit') {
+		generatorClass = FurnitureCatalogGenerator;
+		if (lang === 'en') {
+			template = new EnFurnitureCatalogTemplate;
+		} else if (lang === 'pt') {
+			template = new PtFurnitureCatalogTemplate;
 		}
 	}
 
@@ -150,7 +160,7 @@ document.addEventListener('click', function(e) {
 			var msg = successful ? 'successful' : 'unsuccessful';
 			console.log('Copy email command was ' + msg);
 			if (successful) {
-				window.getSelection().removeAllRanges();				
+				window.getSelection().removeAllRanges();
 			}
 		} catch (err) {
 			console.log('Oops, unable to copy');
