@@ -129,8 +129,9 @@ __NOTOC__
 === Até ${next_wednesday} de ${native_months[next_month].toLocaleLowerCase()} ===
 * Clique no tênis da direita dos ''Tênis Quadriculados Roxos'' → [[Fantasia de Puffle Dourado]]
 
-== SWF ==
-* [[archive:Media:PTCatalogues${Utils.en_months[month].substring(0, 3)}${year}.swf|Estilo Pinguim ${native_months[month]} ${year}]]
+== Arquivos arquivados ==
+* [[archives:Media:PTCataloguesClothing${Utils.en_months[month].substring(0, 3)}${year}.json|Estilo Pinguim ${native_months[month]} ${year}]]
+
 
 {{Estilo Pinguim}}
 

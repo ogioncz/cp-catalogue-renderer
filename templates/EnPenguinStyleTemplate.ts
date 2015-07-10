@@ -163,8 +163,9 @@ File:Hans'Boots.PNG|[[Hans' Boots]]
 * Click on the owl of the ''Owl I Want Outfit'' → [[Hot Pink Sneakers]]
 {{Spoiler2}}
 
-== SWF ==
-* [[archives:Media:ENCataloguesClothing${native_months[month].substr(0, 3)}${year}.swf|${native_months[month]} ${year} Penguin Style]]
+== Archived files ==
+* [[archives:Media:ENCataloguesClothing${native_months[month].substr(0, 3)}${year}.json|${native_months[month]} ${year} Penguin Style]]
+
 
 [[Category:Penguin Style]]
 {{Penguin Style}}
