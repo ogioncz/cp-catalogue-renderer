@@ -56,6 +56,7 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 
 	if (template) {
 		let generator : WikitextGenerator = new generatorClass(template);
+		container.innerHTML = '<div class="loading"></div>Loading…';
 		generator.render({catalogue: catalogue, lang: lang}).then(function(result) {
 			container.innerHTML = result;
 			Utils.eachChild(container, 'input[type="radio"]', function(el) {
