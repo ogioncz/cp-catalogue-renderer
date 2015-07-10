@@ -14,7 +14,8 @@ export class Utils {
 	}
 
 	static capitalise(str) {
-		return str.replace(/\b\w/g, (match) => match.toUpperCase());
+		// should really be \b\w but javascript is idiotic
+		return str.replace(/(?:^|[\s-_:])\S/g, (match) => match.toUpperCase());
 	}
 
 	static stripDiacritics(str) {
