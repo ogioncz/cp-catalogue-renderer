@@ -29,9 +29,9 @@ export class PtFurnitureTemplate implements WikitextTemplate {
 		let image = 'File:' + Utils.stripDiacritics(item.label_pt) + '.png'
 
 		return `<form><label><input type="radio" name="gender" value="masculinum" checked="checked">Masculinum</label> <label><input type="radio" name="gender" value="femininum">Femininum</label>
-<label><input type="radio" name="number" value="singular" checked="checked">Singular</label> <label><input type="radio" name="number" value="plural">Plural</label>
+<label><input type="radio" name="number" value="singular" checked="checked">Singular</label> <label><input type="radio" name="number" value="plural">Plural</label></form>
 
-{{InfoboxMoveis
+<div class="copyable" data-title="${item.label_pt}">{{InfoboxMoveis
 |nome = ${item.label_pt}
 |imagem = ${image}
 |disponivel = ${available}
@@ -48,7 +48,7 @@ ${f('A', 'O')}${pl('s', '')} '''${item.label_pt}''' ${pl('são', 'é')} um móve
 ${f('A', 'O')}${pl('s', '')} ${item.label_pt} ${pl('foram', 'foi')} ${f('lançada', 'lançado')}${pl('s', '')} na edição de [[Iglu & Cia ${catalogue_issue}|${release_month} de ${release_year}]] do catálogo Iglu & Cia. Atualmente ${pl('são', 'é')} ${f('considerada', 'considerado')}${pl('s', '')} um móvel comum.
 
 === Histórico ===
-{|class="wikitable table-release-history" 
+{|class="wikitable table-release-history"
 !Catálogo!!Disponível de!!Disponível até
 |-
 |[[Iglu & Cia]]||${release_date}||{{Disponível|Móveis}}
@@ -70,6 +70,6 @@ ${f('A', 'O')}${pl('s', '')} ${item.label_pt} ${pl('foram', 'foi')} ${f('lançad
 [[Categoria:Móveis lançados em ${release_year}]]
 
 [[en:${item.label_en}]]
-</form>`;
+</div>`;
 	}
 }

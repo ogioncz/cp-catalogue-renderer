@@ -62,11 +62,9 @@ File:${file_name}2.png|The ${item.label} on a player card
 			''
 		];
 
-		let can_copy = document.queryCommandSupported('copy') ? '' : ' disabled="disabled"';
+		let template = ` · <a href="http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png">inventory icon</a> · <a href="http://media8.clubpenguin.com/game/items/images/paper/image/600/${item.id}.png">player-card</a>
 
-		let template = `<a href="http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png">inventory icon</a> · <a href="http://media8.clubpenguin.com/game/items/images/paper/image/600/${item.id}.png">player-card</a> · <a href="https://www.clubpenguinwiki.info/w/index.php?title=${encodeURIComponent(item.label)}&action=edit">wiki</a> · <button type="button" class="copy"${can_copy}>copy</button>
-
-<div class="copyable">{{ItemInfobox
+<div class="copyable" data-title="${item.label}">{{ItemInfobox
 |name = ${item.label}
 |image = File:${file_name}.png
 |available = Yes

@@ -54,7 +54,7 @@ export class EnPenguinStyleTemplate implements WikitextTemplate {
 		}
 
 
-		return `{{Current}}
+		return `<div class="copyable" data-title="${native_months[month]} ${year} Penguin Style">{{Current}}
 {{Spoilers}}
 
 {{Succession box|${native_months[prev_month]} ${prev_year} Penguin Style|${native_months[next_month]} ${next_year} Penguin Style}}
@@ -124,6 +124,6 @@ __NOTOC__
 {{Penguin Style}}
 
 [[pt:Estilo Pinguim ${Utils.pt_months[month]} ${year}]]
-`;
+</div>`;
 	}
 }

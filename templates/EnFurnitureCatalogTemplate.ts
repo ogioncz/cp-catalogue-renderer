@@ -49,7 +49,7 @@ export class EnFurnitureCatalogTemplate implements WikitextTemplate {
 			items_clearance += `\nFile:${filenamize(getFurnitureLabel(item.id))}.png|[[${getFurnitureLabel(item.id)}]]`;
 		}
 
-		return `{{Current}}
+		return `<div class="copyable" data-title="${native_months[month]} ${year} Furniture Catalog">{{Current}}
 
 {{Succession box|${native_months[prev_month]} ${prev_year} Furniture Catalog|}}
 &lt;center&gt;The ${native_months[month]} ${year} ''[[Furniture Catalog]]'' was released on ${native_months[month]} ${first_wednesday}, ${year} and it’s still available.&lt;/center&gt;
@@ -100,6 +100,6 @@ __NOTOC__
 [[Category:Furniture Catalog]]
 
 [[pt:Iglu Doce Iglu ${Utils.pt_months[month]} ${year}]]
-`;
+</div>`;
 	}
 }

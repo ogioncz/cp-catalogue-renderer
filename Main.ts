@@ -58,7 +58,7 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 		let generator : WikitextGenerator = new generatorClass(template);
 		container.innerHTML = '<div class="loading"></div>Loading…';
 		generator.render({catalogue: catalogue, lang: lang}).then(function(result) {
-			container.innerHTML = result;
+			container.innerHTML = '<button type="button" class="edit">edit</button>' + result;
 			Utils.eachChild(container, 'input[type="radio"]', function(el) {
 				if (!el.checked) {
 					Utils.eachChild(container, '[data-name="' + el.name + '"][data-value="' + el.value + '"]', (child) => child.style.display = 'none');
@@ -122,7 +122,7 @@ document.getElementById('item').addEventListener('click', function generateItemW
 	if (template) {
 		let generator : WikitextGenerator = new generatorClass(template);
 		generator.render(itemid).then(function(result) {
-			container.innerHTML = result;
+			container.innerHTML = '<button type="button" class="edit">edit</button>' + result;
 			Utils.eachChild(container, 'input[type="radio"]', function(el) {
 				if (!el.checked) {
 					Utils.eachChild(container, '[data-name="' + el.name + '"][data-value="' + el.value + '"]', (child) => child.style.display = 'none');
@@ -148,25 +148,31 @@ document.getElementById('cache').addEventListener('click', function clearCache(e
 
 document.addEventListener('click', function(e) {
 	let el : Element = <Element> e.target;
-	if (el.classList.contains('copy')) {
-		let copyable = el.nextElementSibling;
+	if (el.classList.contains('edit')) {
+		let lang = langSelect.options[langSelect.selectedIndex].value;
+		let copyable = el;
+		while(copyable && !copyable.classList.contains('copyable')) {
+			console.log(copyable);
+			copyable = copyable.nextElementSibling;
+		}
 
+		let form = document.createElement('form');
+		form.action = 'http://' + (lang == 'pt' ? 'pt' : 'www') + '.clubpenguinwiki.info/w/index.php?title=' + encodeURIComponent(copyable.getAttribute('data-title')) + '&action=edit';
+		form.method = 'post';
+		form.target = '_blank';
+		form.style.display = 'none';
+
+		let textarea = document.createElement('textarea');
+		textarea.name = 'wpTextbox1';
 		window.getSelection().removeAllRanges();
 		let range = document.createRange();
 		range.selectNode(copyable);
 		window.getSelection().addRange(range);
+		textarea.value = window.getSelection().toString();
 
-		try {
-			var successful = document.execCommand('copy');
-			var msg = successful ? 'successful' : 'unsuccessful';
-			console.log('Copy email command was ' + msg);
-			if (successful) {
-				window.getSelection().removeAllRanges();
-			}
-		} catch (err) {
-			console.log('Oops, unable to copy');
-		}
-
-		e.preventDefault();
+		form.appendChild(textarea);
+		document.body.appendChild(form);
+		form.submit();
+		document.body.removeChild(form);
 	}
 })

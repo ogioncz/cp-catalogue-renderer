@@ -52,7 +52,7 @@ export class PtPenguinStyleTemplate implements WikitextTemplate {
 			flags += `\nArquivo:Bandeira${filenamize(getLabel(item.id))}.png|[[Bandeira ${getLabel(item.id)}|${getLabel(item.id)}]]`;
 		}
 
-		return `{{Caixa de Sucessão|Estilo Pinguim ${native_months[prev_month]} ${prev_year}|Estilo Pinguim ${native_months[next_month]} ${next_year}}}
+		return `<div class="copyable" data-title="Estilo Pinguim ${native_months[month]} ${year}">{{Caixa de Sucessão|Estilo Pinguim ${native_months[prev_month]} ${prev_year}|Estilo Pinguim ${native_months[next_month]} ${next_year}}}
 &lt;center&gt;O catálogo [[Estilo Pinguim]] de ${native_months[month]} de ${year} foi lançado no dia ${first_wednesday} de ${native_months[month]} e permaneceu disponível até ${next_wednesday} de ${native_months[next_month]} de ${next_year}.&lt;/center&gt;
 
 __NOTOC__
@@ -118,6 +118,6 @@ __NOTOC__
 [[Categoria:Estilo Pinguim]]
 
 [[en:${Utils.en_months[month]} ${year} Penguin Style]]
-`;
+</div>`;
 	}
 }

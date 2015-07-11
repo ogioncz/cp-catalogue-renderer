@@ -20,7 +20,7 @@ export class EnFurnitureTemplate implements WikitextTemplate {
 		let catalogue = true;
 		let catalogue_sentence = catalogue ? ('in the [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Furniture & Igloo Catalog]]') : '';
 
-		return `{{FurnitureInfobox
+		return `<div class="copyable" data-title="${item.label}">{{FurnitureInfobox
 |name = ${item.label}
 |available = Yes
 |member = ${is_member}
@@ -37,7 +37,7 @@ The '''${item.label}''' is a ${this.sorts[item.sort]} furniture item in ''[[Club
 The ${item.label} made its debut on ${release_date}${catalogue_sentence}. It's currently considered a common item.
 
 === Release history ===
-{|class="wikitable" 
+{|class="wikitable"
 !Catalog!!Available from!!Available until
 |-
 |Furniture & Igloo Catalog||${release_date}||{{Available|Furniture}}
@@ -58,6 +58,6 @@ The ${item.label} made its debut on ${release_date}${catalogue_sentence}. It's c
 [[Category:Furniture released in ${d.getFullYear()}]]]
 
 [[pt:${item.label_pt}]]
-`;
+</div>`;
 	}
 }

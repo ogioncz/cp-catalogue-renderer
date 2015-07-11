@@ -49,7 +49,7 @@ export class PtFurnitureCatalogTemplate implements WikitextTemplate {
 			items_clearance += `\nArquivo:${filenamize(getFurnitureLabel(item.id))}.png|[[${getFurnitureLabel(item.id)}]]`;
 		}
 
-		return `{{Caixa de Sucessão|Iglu Doce Iglu ${native_months[prev_month]} ${prev_year}|Iglu Doce Iglu ${native_months[next_month]} ${next_year}}}
+		return `<div class="copyable" data-title="Iglu Doce Iglu ${native_months[month]} ${year}">{{Caixa de Sucessão|Iglu Doce Iglu ${native_months[prev_month]} ${prev_year}|Iglu Doce Iglu ${native_months[next_month]} ${next_year}}}
 &lt;center&gt;O catálogo [[Iglu Doce Iglu]] de ${native_months[month]} de ${year} foi lançado dia ${first_wednesday} de ${native_months[month]} e permaneceu disponível até ${next_wednesday} de ${native_months[next_month]} de ${next_year}.&lt;/center&gt;
 
 __NOTOC__
@@ -99,6 +99,6 @@ __NOTOC__
 [[Categoria:Iglu Doce Iglu]]
 
 [[en:${Utils.en_months[month]} ${year} Furniture Catalog]]
-`;
+</div>`;
 	}
 }
