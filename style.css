@@ -36,6 +36,18 @@ fieldset + fieldset {
 	margin-top: 0.5em
 }
 
+.question {
+	background: darkblue;
+	color: white;
+	border-radius: 50%;
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
 @keyframes rot {
 	from {transform: rotate(0deg);}
 	to {transform: rotate(359deg);}
