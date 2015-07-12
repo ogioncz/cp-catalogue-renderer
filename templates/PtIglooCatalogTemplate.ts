@@ -90,7 +90,7 @@ __NOTOC__
 &lt;/div&gt;
 
 
-== Arquivos arquivados ==
+== Arquivos ==
 * [[archives:Media:PTCataloguesFurniture${Utils.en_months[month].substring(0, 3)}${year}.json|Iglu Novo em Folha ${native_months[month]} ${year}]]
 
 

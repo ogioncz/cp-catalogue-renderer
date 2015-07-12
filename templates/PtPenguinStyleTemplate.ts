@@ -109,7 +109,7 @@ __NOTOC__
 &lt;/div&gt;
 &lt;/div&gt;
 
-== Arquivos arquivados ==
+== Arquivos ==
 * [[archives:Media:PTCataloguesClothing${Utils.en_months[month].substring(0, 3)}${year}.json|Estilo Pinguim ${native_months[month]} ${year}]]
 
 
