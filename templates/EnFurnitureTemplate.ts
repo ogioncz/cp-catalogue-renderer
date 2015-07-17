@@ -18,7 +18,7 @@ export class EnFurnitureTemplate implements WikitextTemplate {
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 
 		let catalogue = true;
-		let catalogue_sentence = catalogue ? ('in the [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Furniture & Igloo Catalog]]') : '';
+		let catalogue_sentence = catalogue ? (' in the [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Furniture & Igloo Catalog]]') : '';
 
 		return `<div class="copyable" data-title="${item.label}">{{FurnitureInfobox
 |name = ${item.label}

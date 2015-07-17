@@ -49,9 +49,11 @@ export class EnItemTemplate implements WikitextTemplate {
 
 		let gallery = '';
 		if (item.type === 8) {
-			gallery = `File:${file_name}Location.png|The ${item.label} location`;
+			gallery = `File:${file_name}Location.png|The ${item.label} location
+`;
 		} else if (item.type === 9) {
-			gallery = `File:${file_name}Icon.png|The ${item.label} icon`;
+			gallery = `File:${file_name}Icon.png|The ${item.label} icon
+`;
 		} else {
 			gallery = `File:${file_name}1.png|The ${item.label} in-game
 File:${file_name}2.png|The ${item.label} on a player card
