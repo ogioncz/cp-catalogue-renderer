@@ -6,6 +6,8 @@ export class EnItemTemplate implements WikitextTemplate {
 	private type_categories = {1: 'Color Items', 2: 'Head Items', 3: 'Face Items', 4: 'Neck Items', 5: 'Body Items', 6: 'Hand Items', 7: 'Feet Items', 8: 'Flags and Pins', 9: 'Backgrounds', 10: 'Awards'};
 
 	render(data) {
+		let pl = (a, b) => '<span data-type="radio" data-name="number" data-value="plural">' + a + '</span>' + '<span data-type="radio" data-name="number" data-value="singular">' + b + '</span>';
+
 		let item = data.item;
 		item.type = parseInt(item.type);
 
@@ -15,6 +17,15 @@ export class EnItemTemplate implements WikitextTemplate {
 		let file_name = Utils.capitalise(item.label).replace(/ /g, '');
 
 		let type_info = (item.type == 8 || item.type == 9) ? ('[[' + Utils.capitalise(this.types[item.type]) + ']]') : (Utils.capitalise(this.types[item.type]) + ' Item');
+
+		let singular_checked = '';
+		let plural_checked = '';
+		if (item.type == 7) {
+			plural_checked = ' checked="checked"';
+		} else {
+			singular_checked = ' checked="checked"';
+		}
+
 		let type_sentence = 'a ' + this.types[item.type] + ((item.type == 8 || item.type == 9) ? '' : ' item');
 		let is_member = item.is_member ? 'Yes' : 'No';
 		let who_can_buy = !item.is_member ? 'All players' : 'Members';
@@ -25,13 +36,21 @@ export class EnItemTemplate implements WikitextTemplate {
 
 		let d = new Date();
 
-		let penguin_style = true
+		let penguin_style = true;
+		let party = 'None';
+		let where_available = where;
 		if (penguin_style) {
 			d.setDate(Utils.getFirstDayInMonthDate(3, d));
-			where = '[[Penguin Style]]';
+			where_available = where = '[[Penguin Style]]';
 			where_to_get = ' from the [[Penguin Style]]';
 			history_catalogue = ' in [[' + Utils.en_months[d.getMonth()] + ' ' + d.getFullYear() + ' Penguin Style]]';
+		} else {
+			where = '[[Headquarters (Inside Out Party)|Headquarters]]';
+			where_available = party = '[[Inside Out Party]]';
+			where_to_get = ' after finding the missing Disgust Core Memory during the ' + party;
 		}
+
+		let goes_along = ` ${pl('They go', 'It goes')} along with [[]] and the [[]].`;
 
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 
@@ -66,29 +85,30 @@ File:${file_name}2.png|The ${item.label} on a player card
 
 		let template = ` · <a href="http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png">inventory icon</a> · <a href="http://media8.clubpenguin.com/game/items/images/paper/image/600/${item.id}.png">player-card</a>
 
+<form><label><input type="radio" name="number" value="singular"${singular_checked}>Singular</label> <label><input type="radio" name="number" value="plural"${plural_checked}>Plural</label></form>
 <div class="copyable" data-title="${item.label}">{{ItemInfobox
 |name = ${item.label}
 |image = File:${file_name}.png
 |available = Yes
 |type = ${type_info}
 |member = ${is_member}
-|party = None
+|party = ${party}
 |cost = ${cost}
 |found = ${where}
 |id = ${item.id}
 |unlock = No
 }}
 
-The '''${item.label}''' is ${type_sentence} in ''[[Club Penguin]]''. ${who_can_buy} are able to get ${item.label} ${cost_sentence}${where_to_get}.
+The '''${item.label}''' ${pl('are a pair of', 'is')} ${type_sentence} in ''[[Club Penguin]]''. ${who_can_buy} are able to get ${item.label} ${cost_sentence}${where_to_get}.${goes_along}
 
 == History ==
-This item was released on ${release_date}${history_catalogue}.${pin_order}
+This item ${pl('were', 'was')} released on ${release_date}${history_catalogue}.${pin_order}
 
 === Release History ===
 {|class="wikitable"
 !Where!!Available from!!Available until
 |-
-|${where}||${release_date}||{{Available|Items}}
+|${where_available}||${release_date}||{{Available|Items}}
 |}
 
 == Gallery ==
