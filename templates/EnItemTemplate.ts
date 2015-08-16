@@ -83,7 +83,14 @@ File:${file_name}2.png|The ${item.label} on a player card
 			''
 		];
 
-		let template = ` · <a href="http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png">inventory icon</a> · <a href="http://media8.clubpenguin.com/game/items/images/paper/image/600/${item.id}.png">player-card</a>
+		let uploadButton = function(uploaded_url) {
+			return ` (<form action="http://www.clubpenguinwiki.info/w/index.php?title=Special:Upload&wpDestFile=${file_name}.png" class="uploadForm" method="post" target="_blank"><input type="hidden" name="wpUploadFileURL" value="${window.location.href + uploaded_url}"><input type="hidden" name="wpUploadDescription" value="Icon of [[${item.label}]]"><input type="hidden" name="wpLicense" value="Copyrighted Game"><input type="hidden" name="wpSourceType" value="url"><button type="submit">Upload</button></form>)`
+		}
+
+		let icon_file = `trim.php?i=http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png`;
+		let paper_file = `trim.php?i=http://media8.clubpenguin.com/game/items/images/paper/icon/600/${item.id}.png`;
+
+		let template = ` · <a href="${icon_file}">inventory icon</a>${uploadButton(icon_file)} · <a href="${paper_file}">player-card</a>
 
 <form><label><input type="radio" name="number" value="singular"${singular_checked}>Singular</label> <label><input type="radio" name="number" value="plural"${plural_checked}>Plural</label></form>
 <div class="copyable" data-title="${item.label}">{{ItemInfobox
