@@ -55,7 +55,6 @@ export class EnPenguinStyleTemplate implements WikitextTemplate {
 
 
 		return `<div class="copyable" data-title="${native_months[month]} ${year} Penguin Style">{{Current}}
-{{Spoilers}}
 
 {{Succession box|${native_months[prev_month]} ${prev_year} Penguin Style|${native_months[next_month]} ${next_year} Penguin Style}}
 
@@ -67,61 +66,37 @@ export class EnPenguinStyleTemplate implements WikitextTemplate {
 __NOTOC__
 
 == Items ==
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Colors'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
-&lt;gallery&gt;${colors}
+=== Colors ===
+&lt;gallery widths="60" heights="60"&gt;${colors}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Backgrounds'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Backgrounds ===
 &lt;gallery&gt;${backgrounds}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Items for everyone'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Items for everyone ===
 &lt;gallery&gt;${items_for_everyone}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Member clothes'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Member clothes ===
 &lt;gallery&gt;${member_items}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''“LAST CHANCE!” items'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== “LAST CHANCE!” items ===
 &lt;gallery&gt;
 
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Flags'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
-&lt;gallery&gt;${flags}
+=== Flags ===
+&lt;gallery widths="60" heights="60"&gt;${flags}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
 == Archived files ==
 * [[archives:Media:ENCataloguesClothing${native_months[month].substr(0, 3)}${year}.json|${native_months[month]} ${year} Penguin Style]]
 
+{{Penguin Style}}
 
 [[Category:Penguin Style]]
-{{Penguin Style}}
 
 [[pt:Estilo Pinguim ${Utils.pt_months[month]} ${year}]]
 </div>`;

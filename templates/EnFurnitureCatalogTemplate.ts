@@ -59,37 +59,21 @@ __NOTOC__
 [[File:FurnitureCatalog${native_months[month].substring(0, 3)}${year}.png|center|250px]]
 
 == Items ==
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''${native_months[month]} Furniture'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== ${native_months[month]} Furniture ===
 &lt;gallery&gt;${items_current}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Furniture'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Furniture ===
 &lt;gallery&gt;${items_normal}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Igloo Flooring'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Igloo Flooring ===
 &lt;gallery&gt;${items_flooring}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Until ${native_months[next_month].toLowerCase().substring(0, 3)}. ${next_wednesday}'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Until ${native_months[next_month].toLowerCase().substring(0, 3)}. ${next_wednesday} ===
 &lt;gallery&gt;${items_clearance}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
 == Archived files ==
 * [[archives:Media:ENCataloguesFurniture${Utils.en_months[month].substring(0, 3)}${year}.json|Furniture Catalog ${native_months[month]} ${year}]]

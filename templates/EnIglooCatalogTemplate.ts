@@ -59,37 +59,21 @@ __NOTOC__
 [[File:IglooCatalog${native_months[month].substring(0, 3)}${year}.png|center|250px]]
 
 == Items ==
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''${native_months[month]} Igloos'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== ${native_months[month]} Igloos ===
 &lt;gallery&gt;${igloos_current}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Igloos'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Igloos ===
 &lt;gallery&gt;${igloos_normal}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Igloo Locations'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Igloo Locations ===
 &lt;gallery&gt;${igloo_locations}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
-&lt;div class="toccolours mw-collapsible mw-collapsed"&gt;
-&lt;center&gt;&lt;big&gt;'''Until ${native_months[next_month].toLowerCase().substring(0, 3)}. ${next_wednesday}'''&lt;/big&gt;&lt;/center&gt;
-&lt;div class="mw-collapsible-content"&gt;
+=== Until ${native_months[next_month].toLowerCase().substring(0, 3)}. ${next_wednesday} ===
 &lt;gallery&gt;${items_clearance}
 &lt;/gallery&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 
 == Archived files ==
 * [[archives:Media:ENCataloguesIgloo${Utils.en_months[month].substring(0, 3)}${year}.json|Igloo Catalog ${native_months[month]} ${year}]]
