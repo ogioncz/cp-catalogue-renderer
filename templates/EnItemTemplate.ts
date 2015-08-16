@@ -51,6 +51,7 @@ export class EnItemTemplate implements WikitextTemplate {
 		}
 
 		let goes_along = ` ${pl('They go', 'It goes')} along with [[]] and the [[]].`;
+		goes_along = '';
 
 		let release_date = Utils.en_months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 
