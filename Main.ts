@@ -7,6 +7,7 @@ import {FurnitureGenerator} from './generators/FurnitureGenerator';
 import {PenguinStyleGenerator} from './generators/PenguinStyleGenerator';
 import {IglooCatalogGenerator} from './generators/IglooCatalogGenerator';
 import {FurnitureCatalogGenerator} from './generators/FurnitureCatalogGenerator';
+import {FurnitureandiglooCatalogGenerator} from './generators/FurnitureandiglooCatalogGenerator';
 import {EnItemTemplate} from './templates/EnItemTemplate';
 import {EnFurnitureTemplate} from './templates/EnFurnitureTemplate';
 import {PtFurnitureTemplate} from './templates/PtFurnitureTemplate';
@@ -16,6 +17,7 @@ import {EnIglooCatalogTemplate} from './templates/EnIglooCatalogTemplate';
 import {PtIglooCatalogTemplate} from './templates/PtIglooCatalogTemplate';
 import {EnFurnitureCatalogTemplate} from './templates/EnFurnitureCatalogTemplate';
 import {PtFurnitureCatalogTemplate} from './templates/PtFurnitureCatalogTemplate';
+import {EnFurnitureandiglooCatalogTemplate} from './templates/EnFurnitureandiglooCatalogTemplate';
 
 var langSelect : HTMLSelectElement = <HTMLSelectElement> document.getElementById('lang');
 
@@ -61,6 +63,12 @@ document.getElementById('wikicatalogue').addEventListener('click', function gene
 			template = new EnFurnitureCatalogTemplate;
 		} else if (lang === 'pt') {
 			template = new PtFurnitureCatalogTemplate;
+		}
+	} else if (catalogue === 'igloofurniture') {
+		catalogue = 'iglooedit';
+		generatorClass = FurnitureandiglooCatalogGenerator;
+		if (lang === 'en') {
+			template = new EnFurnitureandiglooCatalogTemplate;
 		}
 	}
 
