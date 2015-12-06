@@ -36,6 +36,8 @@ export class EnItemTemplate implements WikitextTemplate {
 
 		let d = new Date();
 
+		d.setMonth(d.getMonth() + parseInt(document.getElementById('monthoffset').value));
+
 		let penguin_style = true;
 		let party = 'None';
 		let where_available = where;
@@ -49,6 +51,8 @@ export class EnItemTemplate implements WikitextTemplate {
 			where_available = party = '[[Inside Out Party]]';
 			where_to_get = ' after finding the missing Disgust Core Memory during the ' + party;
 		}
+
+		d.setDate(d.getDate() + parseInt(document.getElementById('dayoffset').value));
 
 		let goes_along = ` ${pl('They go', 'It goes')} along with [[]] and the [[]].`;
 		goes_along = '';
