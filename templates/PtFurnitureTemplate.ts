@@ -59,9 +59,8 @@ ${f('A', 'O')}${pl('s', '')} ${item.label_pt} ${pl('foram', 'foi')} ${f('lançad
 |inglês = ${item.label_en}
 |francês = ${item.label_fr}
 |espanhol = ${item.label_es}
-|alemão = ${item.label_ru}
-|russo = ${item.label_de}
-|lrusso = ${Utils.transliterateCyrillic(item.label_ru)}
+|alemão = {{Indisponível}}
+|russo = {{Indisponível}}
 }}
 
 {{Movswf|${item.id}}}

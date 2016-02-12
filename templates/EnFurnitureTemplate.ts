@@ -48,8 +48,8 @@ The ${item.label} made its debut on ${release_date}${catalogue_sentence}. It's c
 |portuguese = ${item.label_pt}
 |french = ${item.label_fr}
 |spanish = ${item.label_es}
-|german = ${item.label_de}
-|russian = ${item.label_ru}
+|german = {{After Sunset}}
+|russian = {{After Sunset}}
 }}
 
 {{Furnitureswf|${item.id}}}

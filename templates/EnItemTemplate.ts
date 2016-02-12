@@ -132,8 +132,8 @@ ${gallery}&lt;/gallery&gt;
 |portuguese = ${item.label_pt}
 |french = ${item.label_fr}
 |spanish = ${item.label_es}
-|german = ${item.label_de}
-|russian = ${item.label_ru}
+|german = {{After Sunset}}
+|russian = {{After Sunset}}
 }}
 
 {{${itemswf_template}|${item.id}${itemswf_args}}}
